@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Personne - Recherche personne
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <h1 class="container mt-4">Rechercher personne(s)</h1>
+    <form class="container mt-4" method="POST" action="{{ path('recherche') }}">
+        <div class="container mt-4">
+            <input class="container mt-4" type="text" name="nomRechercher" class="form-control" placeholder="Nom à rechercher" id="inputDefault">
+        </div>
+        <div class="container mt-4">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+
+    </form>
+
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOM</th>
+            <th scope="col">PRENOM </th>
+            <th scope="col">DATE NAISSANCE</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">Edition</th>
+			<th scope="col">Suppresion</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if listePersonnes is not empty %}
+        <h2 class="container mt-4">Résultat(s) de la recherche  </h2>
+        
+            {% for personne in listePersonnes %}
+                {% if personne.nom is not null %}
+                    <tr class="table-primary">
+                <th scope="row">{{ personne.id}}</th>
+                <td>{{ personne.nom}}</td>
+                <td>{{ personne.prenom}}</td>
+                <td>{{ personne.datenaissance|date('d/m/Y')}}</td>
+                <td>{{ personne.email}}</td>
+                <td>
+					<a href="{{ path('personne.edit', { id: personne.id }) }}" class="btn btn-info">Modifier</a>
+				</td>
+				<td>
+					<a href="{{ path('personne.delete', { id: personne.id }) }}" class="btn btn-warning">Supprimer</a>
+				</td>
+            </tr>   
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif%}
+
+</div>
+{% endblock %}

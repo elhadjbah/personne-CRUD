@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion Personne
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container mt-4">
+    <h1 class="display-4">Bienvenue sur ce site : la gestion des personnes</h1>
+    <hr class="my-4">
+    <h3 class="container mt-4">Rendez-vous à la page d'enregistrement des personnes</h3>
+    <a href="{{ path('personne.new') }}" class="btn btn-primary">
+				Ajouter une personne
+	</a>
+    <hr class="my-4">
+    <h3 class="container mt-4">Rendez-vous à la page pour lister les personnes enregistrées</h3>
+    <a href="{{ path('app_personne') }}" class="btn btn-primary">
+				Liste les personnes enregistrées
+	</a>
+    <hr class="my-4">
+    <h3 class="container mt-4">Rendez-vous à la page pour rechercher une(des) personne(s) enregistrées</h3>
+    <a href="{{ path('recherche') }}" class="btn btn-primary">
+				Rechercher personne(s)
+	</a>
+    
+    <hr class="my-4">
+    
+        <h2>Developpeur</h2>
+        <h4 "container mt-4">BAH Elhadj Souleymane</h4>
+    
+</div>
+
+{% endblock %}
